@@ -41,3 +41,6 @@ class AuthStore{
         console.log('已注销');
     }
 }
+
+
+export { AuthStore } ;
