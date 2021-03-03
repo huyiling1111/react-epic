@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import { createContext, useContext } from 'react';
 import { AuthStore } from './auth';
 
 const context = createContext({
@@ -8,3 +8,5 @@ const context = createContext({
 
 export const useStores = () => useContext(context);
 // 使用上下文 传递值的
+
+// 后代组件和后代组件之间没法直接传值, 就需要通过一层一层的祖辈组件去中转消息，才有了context

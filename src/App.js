@@ -21,6 +21,7 @@ function App() {
     return (
         <>
         <Header/>
+        <main>
             <Suspense fallback={<Loading />}>
             <Switch>
                 <Route path="/" exact component={Home} />
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/register" component={Register} />
             </Switch>
             </Suspense>
+        </main>
          <Footer/>
         </>
     );
