@@ -34,7 +34,7 @@ const Auth = {
 
 }
 
-
+console.log('当前用户',Auth.getCurrentUser())
 
 export {
     Auth

@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import { Auth } from '../models';
+import { Auth } from '../model';
 
 class UserStore {
     @observable currentUser = null;
@@ -14,4 +14,4 @@ class UserStore {
 }
 
 
-export default new UserStore() ;
+export default  new UserStore();

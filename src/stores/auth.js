@@ -1,5 +1,6 @@
 import {observable,action} from "mobx";
 import {Auth} from "../model"
+import UserStore from './user';
 class AuthStore{
     @observable isLogin =false;  //状态
     @observable isLoading =false;
@@ -19,30 +20,38 @@ class AuthStore{
         this.values.password = password;
     }
     @action login() {
-        Auth.login(this.values.username, this.values.password)
-            .then(user => {
-                console.log(user)
-            }).catch(err => {
-            console.log(err)
-        })
-
+        return new Promise((resolve, reject) => {
+            Auth.login(this.values.username, this.values.password)
+                .then(user => {
+                    UserStore.pullUser();
+                    console.log()
+                    resolve(user);
+                }).catch(err => {
+                UserStore.resetUser();
+                reject(err);
+            })
+        });
     }
 
     @action register() {
         return new Promise((resolve,reject)=>{
         Auth.register(this.values.username, this.values.password)
             .then(user => {
+                UserStore.pullUser();
+                console.log(UserStore.currentUser,'111')
                resolve(user)
             }).catch(err => {
+            UserStore.resetUser();
            reject(err)
         })
         })
     }
 
     @action logout() {
-        console.log('已注销');
+        UserStore.resetUser();
+        Auth.logout();
     }
 }
 
 
-export { AuthStore } ;
+export  default  new AuthStore();
