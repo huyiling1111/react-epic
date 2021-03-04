@@ -5,7 +5,7 @@ AV.init({
     appKey: "caRSIXUMjnXJ0KWUpowpJfNy",
     serverURL: "https://e1xspypk.lc-cn-n1-shared.com"
 });
-
+// 调用后端接口
 const Auth = {
     register(username, password) {
         let user = new User();
@@ -33,10 +33,21 @@ const Auth = {
     }
 
 }
-
+const Uploader = {
+    add(file, filename) {
+        const item = new AV.Object('Image');
+        const avFile = new AV.File(filename, file);
+        item.set('filename', filename);
+        item.set('owner', AV.User.current());
+        item.set('url', avFile);
+        return new Promise((resolve, reject) => {
+            item.save().then(serverFile => resolve(serverFile), error => reject(error));
+        });
+    }
+}
 console.log('当前用户',Auth.getCurrentUser())
 
 export {
-    Auth
+    Auth,Uploader
 };
 
