@@ -12,6 +12,7 @@ const context = createContext({
     HistoryStore
 });
 // 创建上下文
+window.HistoryStore=HistoryStore
 
 export const useStores = () => useContext(context);
 // 使用上下文 传递值的
