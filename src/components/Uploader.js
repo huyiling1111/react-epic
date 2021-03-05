@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useStores } from '../stores';
-    import { observer, useLocalStore } from 'mobx-react';
-import { Upload, message } from 'antd';
+import { observer, useLocalStore } from 'mobx-react';
+import { Upload, message, Spin } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 
@@ -92,6 +92,7 @@ const Component = observer(() => {
 
     return (
         <div>
+            <Spin tip="上传中" spinning={ImageStore.isUpoading}>
             <Dragger {...props}>
                 <p className="ant-upload-drag-icon">
                     <InboxOutlined />
@@ -102,6 +103,7 @@ const Component = observer(() => {
                     band files
                 </p>
             </Dragger>
+            </Spin>
 
             {
                 ImageStore.serverFile ? <Result>
