@@ -114,7 +114,7 @@ const Component = () => {
 
 
                 <Form.Item {...tailLayout}>
-                    <Button type="primary" htmlType="submit">
+                    <Button  type="primary" htmlType="submit">
                         提交
                     </Button>
                 </Form.Item>
