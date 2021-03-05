@@ -22,9 +22,9 @@ const StyledLink = styled(NavLink)`
   color: #fff;
   margin-left: 30px;
 
-  &.active {
-    border-bottom: 1px solid #fff;
-  }
+  //&.active {
+  //  border-bottom: 1px solid #fff;
+  //}
 `;
 
 const Login = styled.div`
@@ -65,7 +65,7 @@ const Component=observer(()=> {
       <nav>
         <StyledLink to="/" activeClassName="active" exact>首页</StyledLink>
         <StyledLink to="/history" activeClassName="active">上传历史</StyledLink>
-        <StyledLink to="/about" activeClassName="active">关于我</StyledLink>
+        <StyledLink to="/about" activeClassName="active">关于</StyledLink>
       </nav>
       <Login>
           {
