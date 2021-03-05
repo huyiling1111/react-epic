@@ -66,7 +66,17 @@ const Component = observer(() => {
             ImageStore.setFile(file);
             ImageStore.setFilename(file.name);
             if(UserStore.currentUser === null) {
+                //判断用户是否处于登录状态
                 message.warning('请先登录再上传！');
+                return false;
+            }
+           window.file=file
+            if (!/(svg$)|(png$)|(jpg$)|(jpeg$)|(gif$)/ig.test(file.type)) {
+                message.error('只能上传png/svg/jpg/gif格式的图片');
+                return false;
+            }
+            if (file.size > 1024 * 1024) {
+                message.error('图片最大1M');
                 return false;
             }
             ImageStore.upload()
