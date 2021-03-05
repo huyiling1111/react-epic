@@ -1,9 +1,13 @@
 import React from 'react';
+import List from '../components/List';
+import { useStores } from '../stores';
 
 function History() {
+    // const { HistoryStore } = useStores();
     return (
         <>
-            <h1>History</h1>
+
+            <List></List>
         </>
     );
 }

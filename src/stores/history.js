@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import { Uploader } from '../models';
+import { Uploader } from '../model';
 import { message } from 'antd';
 
 
@@ -35,3 +35,5 @@ class HistoryStore {
         this.page = 0;
     }
 }
+
+export  default HistoryStore;

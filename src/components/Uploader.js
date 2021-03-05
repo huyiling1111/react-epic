@@ -97,10 +97,9 @@ const Component = observer(() => {
                 <p className="ant-upload-drag-icon">
                     <InboxOutlined />
                 </p>
-                <p className="ant-upload-text">Click or drag file to this area to upload</p>
+                <p className="ant-upload-text">单击或拖动文件到该区域以上传</p>
                 <p className="ant-upload-hint">
-                    Support for a single or bulk upload. Strictly prohibit from uploading company data or other
-                    band files
+                    仅支持 .png / .jpg / .jpeg / .gif / .svg 格式的图片，图片最大 1M
                 </p>
             </Dragger>
             </Spin>
