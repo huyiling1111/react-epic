@@ -106,27 +106,6 @@ ImageStore.serverFile.attributes.url.attributes.url 读数据
     ```
 
 
-本项目需要登录注册两个按钮来分别控制两个组件，所以需要两个开关的变量来实现。操作也是两个，分别控制相应的变量，再在某个地方进行整合。  
-要知道 React 并非是响应式的。这个 UI 的是因为 useReducer 帮我们渲染了。因为每一次操作都是产生一个新的状态，而非之前的那个状态。切记这一点，这个思维方式与之前学习的 Vue有些出入。Vue 的响应式是根据一个数据是否被改变了而更新UI，而 React 则是产生新的数据，不会修改之前的数据。
-**懒加载**功能应该是网页必须的优化之一。在构建应用时我们需要关注代码包中所包含的代码，以避免因体积过大而导致加载时间过长。打包工具（如Webpack）就能提供代码分割，代码分割了就能实现动态按需加载。在初始加载的时候减少所需加载的代码量，能够显著地提高你的应用性能。  
-React 中提供了一种方式，**React.lazy & Suspense** 技术，它目前还不支持服务端的渲染，服务端渲染推荐 Loadable Components 这个库。  
-**React.lazy** 函数能让你像渲染常规组件一样处理动态引入（的组件）。使用方法如下：
-```jsx
-const OtherComponent = React.lazy(() => import('./OtherComponent'));
-```
-此代码会在页面首次渲染时自动导入相应的组件包。React.lazy 接收一个函数，这个函数需要动态调用import()，它必须返回一个 Promise，该 Promise 需要 resolve 一个 default export 的 React 组件。然后应在 **Suspense** 组件中渲染 lazy 组件，如此使得我们可以使用在等待加载 lazy 组件时做优雅降级（如 loading 指示器等）。
-```jsx
-import React, { Suspense } from 'react';
-const OtherComponent = React.lazy(() => import('./OtherComponent'));
-function MyComponent() {
-  return (
-    <div>
-      <Suspense fallback={<div>Loading...</div>}>
-        <OtherComponent />
-      </Suspense>
-    </div>
-  );
-}
 ```
 
 ### 3. 接入后台
